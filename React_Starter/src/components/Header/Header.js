@@ -1,45 +1,57 @@
-import React, {Component} from 'react';
+import React, { Component } from "react";
 import {
   Nav,
-  NavItem,
-  NavbarToggler,
   NavbarBrand,
-} from 'reactstrap';
+  NavbarToggler,
+  NavItem,
+  NavLink,
+  Badge
+} from "reactstrap";
+import Notifications from "./Notifications";
+import ProfileButton from "./ProfileButton";
 
 class Header extends Component {
-
   sidebarToggle(e) {
     e.preventDefault();
-    document.body.classList.toggle('sidebar-hidden');
+    document.body.classList.toggle("sidebar-hidden");
   }
 
   sidebarMinimize(e) {
     e.preventDefault();
-    document.body.classList.toggle('sidebar-minimized');
+    document.body.classList.toggle("sidebar-minimized");
   }
 
   mobileSidebarToggle(e) {
     e.preventDefault();
-    document.body.classList.toggle('sidebar-mobile-show');
+    document.body.classList.toggle("sidebar-mobile-show");
   }
 
   asideToggle(e) {
     e.preventDefault();
-    document.body.classList.toggle('aside-menu-hidden');
+    document.body.classList.toggle("aside-menu-hidden");
   }
 
   render() {
+    console.log(this.props);
     return (
       <header className="app-header navbar">
         <NavbarToggler className="d-lg-none" onClick={this.mobileSidebarToggle}>
-          <span className="navbar-toggler-icon"></span>
+          <span className="navbar-toggler-icon" />
         </NavbarToggler>
-        <NavbarBrand href="#"></NavbarBrand>
-        <NavbarToggler className="d-md-down-none mr-auto" onClick={this.sidebarToggle}>
-          <span className="navbar-toggler-icon"></span>
+        <NavbarBrand href="#" />
+        <NavbarToggler
+          className="d-md-down-none mr-auto"
+          onClick={this.sidebarToggle}
+        >
+          <span className="navbar-toggler-icon" />
         </NavbarToggler>
+        <Nav className="ml-auto" navbar>
+          <Notifications />
+          <ProfileButton />
+        </Nav>
+
         <NavbarToggler className="d-md-down-none" onClick={this.asideToggle}>
-          <span className="navbar-toggler-icon"></span>
+          <span className="navbar-toggler-icon" />
         </NavbarToggler>
       </header>
     );
